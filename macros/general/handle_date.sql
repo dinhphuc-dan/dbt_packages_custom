@@ -10,9 +10,6 @@
     PARSE_DATE('{{date_format}}', {{column_name}})
 {%- endmacro %}
 
-
-
-{% macro extract_date_from_timestamp(timestamp_column)%}
-     extract(date from {{timestamp_column}})
+{% macro today(string_format = '%Y%m%d' ,time_zone = 'Asia/Ho_Chi_Minh')%}
+     format_date('{{string_format}}',current_date('{{time_zone}}'))
 {% endmacro %}
-
