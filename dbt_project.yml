@@ -16,3 +16,78 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
+tests:
+  +severity: warn
+
+vars:
+  string_yesterday_and_2days_ago: [
+    format_date('%Y%m%d',date_sub(current_date(), interval 1 day)),
+    format_date('%Y%m%d',date_sub(current_date(), interval 2 day))
+  ]
+
+  string_yesterday_and_3days_ago: [
+    format_date('%Y%m%d',date_sub(current_date(), interval 1 day)),
+    format_date('%Y%m%d',date_sub(current_date(), interval 2 day)),
+    format_date('%Y%m%d',date_sub(current_date(), interval 3 day))
+  ]
+
+  string_yesterday_and_7days_ago: [
+    format_date('%Y%m%d',date_sub(current_date(), interval 1 day)),
+    format_date('%Y%m%d',date_sub(current_date(), interval 2 day)),
+    format_date('%Y%m%d',date_sub(current_date(), interval 3 day)),
+    format_date('%Y%m%d',date_sub(current_date(), interval 4 day)),
+    format_date('%Y%m%d',date_sub(current_date(), interval 5 day)),
+    format_date('%Y%m%d',date_sub(current_date(), interval 6 day)),
+    format_date('%Y%m%d',date_sub(current_date(), interval 7 day))
+  ]
+
+  time_zone: "Asia/Ho_Chi_Minh"
+
+  date_today: current_date()
+
+  date_yesterday: date_sub(current_date(), interval 1 day)
+
+  date_yesterday_and_2days_ago: [
+      date_sub(current_date(), interval 1 day),
+      date_sub(current_date(), interval 2 day)
+    ]
+
+  date_yesterday_and_3days_ago: [
+    date_sub(current_date(), interval 1 day),
+    date_sub(current_date(), interval 2 day),
+    date_sub(current_date(), interval 3 day)
+  ]
+
+  date_yesterday_and_7days_ago: [
+    date_sub(current_date(), interval 1 day),
+    date_sub(current_date(), interval 2 day),
+    date_sub(current_date(), interval 3 day),
+    date_sub(current_date(), interval 4 day),
+    date_sub(current_date(), interval 5 day),
+    date_sub(current_date(), interval 6 day),
+    date_sub(current_date(), interval 7 day)
+  ]
+
+  date_yesterday_and_14days_ago: [
+    date_sub(current_date(), interval 1 day),
+    date_sub(current_date(), interval 2 day),
+    date_sub(current_date(), interval 3 day),
+    date_sub(current_date(), interval 4 day),
+    date_sub(current_date(), interval 5 day),
+    date_sub(current_date(), interval 6 day),
+    date_sub(current_date(), interval 7 day),
+    date_sub(current_date(), interval 8 day),
+    date_sub(current_date(), interval 9 day),
+    date_sub(current_date(), interval 10 day),
+    date_sub(current_date(), interval 11 day),
+    date_sub(current_date(), interval 12 day),
+    date_sub(current_date(), interval 13 day),
+    date_sub(current_date(), interval 14 day)
+  ]
+
+  date_last_day_in_month: last_day(current_date(), month)
+
+  date_last_2months: [
+      date_trunc(date_sub(current_date(), interval 1 month), month),
+      date_trunc(current_date(), month)
+  ]
