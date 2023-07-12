@@ -1,4 +1,4 @@
-{% macro adjust_ad_format_name(column_name ) %}
+{% macro adjust_firebase_ad_format_name(column_name ) %}
      case 
         when {{column_name}} = 'show_ad_native' then 'native'
         when {{column_name}} in ('show_ad_open_ads','show_ad_open_ads_resume') then 'app_open'
