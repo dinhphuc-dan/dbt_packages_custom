@@ -1,4 +1,4 @@
-{% macro adjust_ad_network_type_name(column_name) %}
+{% macro adjust_google_ads_ad_network_type_name(column_name) %}
     case
         when {{column_name}} = 'SEARCH' then 'Google search'
         when {{column_name}} = 'SEARCH_PARTNERS' then 'Search partners'
