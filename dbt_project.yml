@@ -43,47 +43,8 @@ vars:
 
   time_zone: "Asia/Ho_Chi_Minh"
 
-  date_today: current_date()
-
-  date_yesterday: date_sub(current_date(), interval 1 day)
-
-  date_yesterday_and_2days_ago: [
-      date_sub(current_date(), interval 1 day),
-      date_sub(current_date(), interval 2 day)
-    ]
-
-  date_yesterday_and_3days_ago: [
-    date_sub(current_date(), interval 1 day),
-    date_sub(current_date(), interval 2 day),
-    date_sub(current_date(), interval 3 day)
-  ]
-
-  date_yesterday_and_7days_ago: [
-    date_sub(current_date(), interval 1 day),
-    date_sub(current_date(), interval 2 day),
-    date_sub(current_date(), interval 3 day),
-    date_sub(current_date(), interval 4 day),
-    date_sub(current_date(), interval 5 day),
-    date_sub(current_date(), interval 6 day),
-    date_sub(current_date(), interval 7 day)
-  ]
-
-  date_yesterday_and_14days_ago: [
-    date_sub(current_date(), interval 1 day),
-    date_sub(current_date(), interval 2 day),
-    date_sub(current_date(), interval 3 day),
-    date_sub(current_date(), interval 4 day),
-    date_sub(current_date(), interval 5 day),
-    date_sub(current_date(), interval 6 day),
-    date_sub(current_date(), interval 7 day),
-    date_sub(current_date(), interval 8 day),
-    date_sub(current_date(), interval 9 day),
-    date_sub(current_date(), interval 10 day),
-    date_sub(current_date(), interval 11 day),
-    date_sub(current_date(), interval 12 day),
-    date_sub(current_date(), interval 13 day),
-    date_sub(current_date(), interval 14 day)
-  ]
+  #device os system has 3 option: both_android_and_ios, android_only, ios_only. This var affect macro clean_firebase_device_os_version_data#
+  device_os_system: 'both_android_and_ios'
 
   date_last_day_in_month: last_day(current_date(), month)
 
