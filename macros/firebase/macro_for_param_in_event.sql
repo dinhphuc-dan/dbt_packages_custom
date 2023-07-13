@@ -13,7 +13,7 @@
         event_name,
         user_id,
         {{clean_null_and_empty_string('app_version')}} as app_version,
-        {{clean_android_device_os_version_data('device_os_version')}} as device_os_version,
+        {{clean_firebase_device_os_version_data('device_os_version')}} as device_os_version,
         {{clean_null_and_empty_string('geo_country')}} as geo_country,
         {{classify_source_of_users('source_medium')}} as users_source,
         {{clean_firebase_source_name_data('source_name')}} as campaign_name

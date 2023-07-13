@@ -1,6 +1,6 @@
 {% macro generate_union_query_for_mutiple_tables_from_same_dataset(project_id, dataset_id,no_month=none) %}
 
-    {% set from_clause = [project_id,dataset_id,'INFORMATION_SCHEMA.TABLES'] | join('.') %}
+    {% set from_clause = "`" ~ project_id ~ "." ~ dataset_id ~ "." ~ "INFORMATION_SCHEMA.TABLES" ~"`" %}
 
     {% set list_table_name_sql %}
         SELECT table_name 
@@ -31,7 +31,7 @@
             Currency_of_Sale, 
             Item_Price,
             Country_of_Buyer
-        from {{[project_id,dataset_id,name] | join('.')}}
+        from `{{[project_id,dataset_id,name] | join('.')}}`
     {% if not loop.last %} union all
     {% endif %}
     {% endfor %}
