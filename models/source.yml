@@ -1,0 +1,8 @@
+version: 2
+sources:
+  - name: raw_incremental_cost_all_apps
+    project: pdf-reader-2-ab0b8
+    dataset: local_raw_incremental_cost_all_apps
+    tables:
+    - name: google_ads_raw_user_location_report
+    - name: google_ads_mcc_usd
