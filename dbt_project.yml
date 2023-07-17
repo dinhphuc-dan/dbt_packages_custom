@@ -46,6 +46,9 @@ vars:
   #device os system has 3 option: both_android_and_ios, android_only, ios_only. This var affect macro clean_firebase_device_os_version_data#
   device_os_system: 'both_android_and_ios'
 
+  #number_day_backwards affect macro generate_incremental_date_for_dbt_incremental
+  number_day_backwards_default: 7
+
   date_last_day_in_month: last_day(current_date(), month)
 
   date_last_2months: [
