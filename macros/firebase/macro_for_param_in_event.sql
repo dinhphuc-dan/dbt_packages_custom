@@ -13,7 +13,7 @@
         event_name,
         user_id,
         {{clean_null_and_empty_string('app_version')}} as app_version,
-        {{clean_firebase_device_os_version_data('device_os_version')}} as device_os_version,
+        device_os_version,
         {{clean_null_and_empty_string('geo_country')}} as geo_country,
         {{classify_source_of_users('source_medium')}} as users_source,
         {{clean_firebase_source_name_data('source_name')}} as campaign_name
@@ -59,7 +59,7 @@
                 event_timestamp,
                 event_name,
                 user_id,
-                event_params.value.string_value as {{param_key}}
+                ifnull(event_params.value.string_value, ifnull(cast(event_params.value.int_value as STRING), ifnull(cast(event_params.value.float_value as STRING), ifnull(cast(event_params.value.double_value as STRING), 'unknown' )))) as {{param_key}}
             from {{ ref(dbt_model_name)}},
             unnest(event_params) as event_params
             where
