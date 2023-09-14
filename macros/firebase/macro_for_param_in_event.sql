@@ -59,7 +59,7 @@
                 event_timestamp,
                 event_name,
                 user_id,
-                ifnull(event_params.value.string_value, ifnull(cast(event_params.value.int_value as STRING), ifnull(cast(event_params.value.float_value as STRING), ifnull(cast(event_params.value.double_value as STRING), 'unknown' )))) as {{param_key}}
+                coalesce(event_params.value.string_value, cast(event_params.value.int_value as STRING), cast(event_params.value.float_value as STRING), cast(event_params.value.double_value as STRING), 'unknown' ) as {{param_key}}
             from {{ ref(dbt_model_name)}},
             unnest(event_params) as event_params
             where
