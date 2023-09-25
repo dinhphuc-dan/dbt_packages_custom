@@ -20,34 +20,13 @@ tests:
   +severity: warn
 
 vars:
-  string_yesterday_and_2days_ago: [
-    format_date('%Y%m%d',date_sub(current_date(), interval 1 day)),
-    format_date('%Y%m%d',date_sub(current_date(), interval 2 day))
-  ]
-
-  string_yesterday_and_3days_ago: [
-    format_date('%Y%m%d',date_sub(current_date(), interval 1 day)),
-    format_date('%Y%m%d',date_sub(current_date(), interval 2 day)),
-    format_date('%Y%m%d',date_sub(current_date(), interval 3 day))
-  ]
-
-  string_yesterday_and_7days_ago: [
-    format_date('%Y%m%d',date_sub(current_date(), interval 1 day)),
-    format_date('%Y%m%d',date_sub(current_date(), interval 2 day)),
-    format_date('%Y%m%d',date_sub(current_date(), interval 3 day)),
-    format_date('%Y%m%d',date_sub(current_date(), interval 4 day)),
-    format_date('%Y%m%d',date_sub(current_date(), interval 5 day)),
-    format_date('%Y%m%d',date_sub(current_date(), interval 6 day)),
-    format_date('%Y%m%d',date_sub(current_date(), interval 7 day))
-  ]
-
   time_zone: "Asia/Ho_Chi_Minh"
 
   #device os system has 3 option: both_android_and_ios, android_only, ios_only. This var affect macro clean_firebase_device_os_version_data#
   device_os_system: 'both_android_and_ios'
 
-  #number_day_backwards affect macro generate_incremental_date_for_dbt_incremental
-  number_day_backwards_default: 7
+  #number_day_backwards affect incremental model
+  number_days_backwards: 7
 
   date_last_day_in_month: last_day(current_date(), month)
 
