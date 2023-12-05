@@ -23,6 +23,7 @@ _{% macro generate_query_call_event_without_param(event_name_list_as_dict, dbt_m
     where
         event.event_name in {{ '(' ~ event_name_list | join(',') ~ ')'}}
         and lower(app_version) not like '%dev%'
+        and lower(app_version) not like '%-b%'
     )
 {% endmacro%}
 
@@ -54,6 +55,7 @@ _{% macro generate_query_call_event_without_param(event_name_list_as_dict, dbt_m
                 event.event_name in {{ '(' ~ event_name_list | join(',') ~ ')'}}
                 and event_params.key = '{{param_key}}' 
                 and lower(app_version) not like '%dev%'
+                and lower(app_version) not like '%-b%'
         ),
     {%-endfor-%}
 
