@@ -17,7 +17,10 @@ _{% macro generate_query_call_event_without_param(event_name_list_as_dict, dbt_m
         geo_country,
         users_source,
         campaign_name,
-        concat(device_marketing_name, ' ', device_model_name) as device
+        concat(device_marketing_name, ' ', device_model_name) as device,
+        {%- if var('device_os_system') == 'both_android_and_ios' %}
+        platform,
+        {% endif -%}
     from {{ ref(dbt_model_name)}}
     left join unnest(event_nested) as event
     where
