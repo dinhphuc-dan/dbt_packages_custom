@@ -1,4 +1,4 @@
-_{% macro generate_query_call_event_without_param(event_name_list_as_dict, dbt_model_name) %}
+_{% macro generate_query_call_event_without_param(event_name_list_as_dict, ref_model_name) %}
     {%- set event_name_list = [] -%}
         {%- for item in event_name_list_as_dict -%}
             {%- for key, value in item.items() %}
@@ -21,7 +21,7 @@ _{% macro generate_query_call_event_without_param(event_name_list_as_dict, dbt_m
         {%- if var('device_os_system') == 'both_android_and_ios' %}
         platform,
         {% endif -%}
-    from {{ ref(dbt_model_name)}}
+    from {{ ref_model_name }}
     left join unnest(event_nested) as event
     where
         event.event_name in {{ '(' ~ event_name_list | join(',') ~ ')'}}
@@ -30,7 +30,7 @@ _{% macro generate_query_call_event_without_param(event_name_list_as_dict, dbt_m
     )
 {% endmacro%}
 
-{% macro generate_query_call_event_with_param_then_join(event_name_list_as_dict, dbt_model_name) %}
+{% macro generate_query_call_event_with_param_then_join(event_name_list_as_dict, ref_model_name) %}
     {%- set event_name_list = [] -%}
     {%- set param_key_list = [] -%}
 
@@ -51,7 +51,7 @@ _{% macro generate_query_call_event_without_param(event_name_list_as_dict, dbt_m
                 event.event_name as event_name,
                 user_id,
                 COALESCE(event_params.value.string_value, cast(event_params.value.int_value as STRING), cast(event_params.value.float_value as STRING), cast(event_params.value.double_value as STRING), 'unknown') as {{param_key}}
-            from {{ ref(dbt_model_name)}}
+            from {{ ref_model_name }}
             left join unnest(event_nested) as event
             left join unnest(event.event_params) as event_params
             where
