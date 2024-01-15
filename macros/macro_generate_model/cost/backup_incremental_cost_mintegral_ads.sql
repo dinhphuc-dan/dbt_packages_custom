@@ -44,9 +44,11 @@ t2 as
             _airbyte_raw_id,
             _airbyte_extracted_at, 
             _airbyte_meta,
-            date
+            date, 
+            location
         ),
         cast(t1.date as date) as date,
+        if(location = 'uk', 'GB', location) as location
     from t1
 ),
 t3 as 
