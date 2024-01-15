@@ -39,7 +39,6 @@ t2 as
             'segments_ad_network_type', 
             'user_location_view_country_criterion_id_string',
             'customer_id_string', 
-            'ad_group_name', 
             'customer_currency_code'
         )}} as primary_key,
 
