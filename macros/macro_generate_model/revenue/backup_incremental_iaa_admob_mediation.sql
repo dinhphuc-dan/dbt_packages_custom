@@ -36,10 +36,8 @@ t2 as
             'country', 
             'platform', 
             'ad_unit', 
-            'gma_sdk_version',
             'app_version_name', 
-            'mobile_os_version', 
-            'serving_restriction'
+            'mobile_os_version'
         )}} as primary_key,
 
         {{string_to_date('t1.date','%Y%m%d')}} as date,
@@ -125,10 +123,8 @@ t2 as
             'ad_unit', 
             'ad_source',
             'mediation_group_name',
-            'gma_sdk_version',
             'app_version_name',
-            'mobile_os_version',
-            'serving_restriction'
+            'mobile_os_version'
         )}} as primary_key,
 
         {{string_to_date('t1.date','%Y%m%d')}} as date,
