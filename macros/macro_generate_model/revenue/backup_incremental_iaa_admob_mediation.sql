@@ -1,4 +1,4 @@
-{# This file contains 3 independent macro #}
+{# This file contains 2 independent macro #}
 {# Macro 1 #}
 {%- macro backup_incremental_iaa_admob_mediation_admob_adsource(dataset, ref_model) -%}
 {{
@@ -52,10 +52,10 @@ t2 as
         '5450213213286189855' as ad_source_id,
         'AdMob Network' as ad_source_name,
         'unknown' as mediation_group_name,
-        gma_sdk_version,
+        'unknown' as gma_sdk_version,
         app_version_name as app_version,
         mobile_os_version,
-        serving_restriction,
+        'unknown' as serving_restriction,
         clicks,
         ad_requests,
         impressions,
@@ -141,10 +141,10 @@ t2 as
         ad_source as ad_source_id,
         ad_source_name as ad_source_name,
         mediation_group_name as mediation_group_name,
-        gma_sdk_version,
+        'unknown' as gma_sdk_version,
         app_version_name as app_version,
         mobile_os_version,
-        serving_restriction,
+        'unknown' as serving_restriction,
         clicks,
         ad_requests,
         impressions,
@@ -171,29 +171,4 @@ final as
     where ranking = 1
 )
 
-{% endmacro -%}
-
-{# Macro 3 #}
-{%- macro backup_realtime_iaa_admob_mediation(ref_model) -%}
-
-{{ 
-    config(
-        materialized='ephemeral',
-    ) 
-}}
-with final as 
-(
-    select distinct
-        APP as admobs_id,
-        {{string_to_date('DATE','%Y%m%d')}} as date,
-        APP_VERSION_NAME as app_version,
-        AD_UNIT as ad_unit_id,
-        AD_UNIT_NAME ad_unit_name,
-        AD_REQUESTS as ad_requests,
-        MATCHED_REQUESTS as matched_requests,
-        IMPRESSIONS as impressions,
-        ESTIMATED_EARNINGS as estimated_earnings,
-        CLICKS as clicks,
-    from {{ref_model}}
-)
 {% endmacro -%}
