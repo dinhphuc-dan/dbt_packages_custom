@@ -27,6 +27,6 @@ with final as
 
     where lower(app_info.version) not like '%-b%' 
         and lower(app_info.version) not like '%dev%' 
-        and _TABLE_SUFFIX >= format_date('%Y%m%d', date_sub(current_date, interval {{var('number_days_backwards')}} day))
+        and _TABLE_SUFFIX >= format_date('%Y%m%d', date_sub(date_sub(current_date, interval {{var('number_days_backwards')}} day), interval 1 day))
 )
 {% endmacro -%}
