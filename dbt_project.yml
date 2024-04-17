@@ -28,9 +28,13 @@ vars:
   #number_day_backwards affect incremental model
   number_days_backwards: 7
 
-  date_last_day_in_month: last_day(current_date(), month)
+  date_today: current_date('Asia/Ho_Chi_Minh')
+
+  date_yesterday: date_sub(current_date('Asia/Ho_Chi_Minh'), interval 1 day)
+
+  date_last_day_in_month: last_day(current_date('Asia/Ho_Chi_Minh'), month)
 
   date_last_2months: [
-      date_trunc(date_sub(current_date(), interval 1 month), month),
-      date_trunc(current_date(), month)
+      date_trunc(date_sub(current_date('Asia/Ho_Chi_Minh'), interval 1 month), month),
+      date_trunc(current_date('Asia/Ho_Chi_Minh'), month)
   ]

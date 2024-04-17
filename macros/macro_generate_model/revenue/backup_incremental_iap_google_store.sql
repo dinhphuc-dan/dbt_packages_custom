@@ -32,7 +32,7 @@ final as
 (
     select * from t1
     {% if is_incremental() %}
-    where Order_Charged_Date >= date_sub(current_date, interval {{var('number_days_backwards')}} day)
+    where Order_Charged_Date >= date_sub({{ var('date_today')}}, interval {{var('number_days_backwards')}} day)
     {% endif %}
 )
 

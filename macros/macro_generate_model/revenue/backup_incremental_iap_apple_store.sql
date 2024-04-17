@@ -71,7 +71,7 @@ t3 as
         t2.*
     from t2 
     {% if is_incremental() %}
-    where date >= date_sub(current_date, interval {{var('number_days_backwards')}} day)
+    where date >= date_sub({{ var('date_today')}}, interval {{var('number_days_backwards')}} day)
     {% endif %}
 ),
 final as 

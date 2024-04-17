@@ -72,7 +72,7 @@ c3 as
         c2.*
     from c2 
     {% if is_incremental() %}
-    where date >= date_sub(current_date, interval {{var('number_days_backwards')}} day)
+    where date >= date_sub({{ var('date_today')}}, interval {{var('number_days_backwards')}} day)
     {% endif %}
 ),
 c_final as 
@@ -136,7 +136,7 @@ a3 as
         a2.*
     from a2 
     {% if is_incremental() %}
-    where date >= date_sub(current_date, interval {{var('number_days_backwards')}} day)
+    where date >= date_sub({{ var('date_today')}}, interval {{var('number_days_backwards')}} day)
     {% endif %}
 ),
 a_final as 
