@@ -23,7 +23,7 @@ with t1 as
         timestamp as timestamp_in_unity,
         {{clean_firebase_device_os_version_data(check_os_version_column = 'os_version', prefix_colum = 'platform' ,condition = var('device_os_system'))}} as os_version,
         creative_pack_type as ad_type,
-        null as SKAd_conversion_value,
+        cast(null as STRING) as SKAd_conversion_value,
         {{extract_date_from_timestamp('_airbyte_extracted_at')}} as airbyte_emitted_date
     from {{ref_model}}
     {% if is_incremental() %}
