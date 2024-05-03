@@ -22,6 +22,8 @@ with t1 as
         string(timestamp) as timestamp_string,
         timestamp as timestamp_in_unity,
         {{clean_firebase_device_os_version_data(check_os_version_column = 'os_version', prefix_colum = 'platform' ,condition = var('device_os_system'))}} as os_version,
+        creative_pack_type as ad_type,
+        null as SKAd_conversion_value,
         {{extract_date_from_timestamp('_airbyte_extracted_at')}} as airbyte_emitted_date
     from {{ref_model}}
     {% if is_incremental() %}
@@ -41,7 +43,8 @@ t2 as
             'creative_pack_id', 
             'target_store_id', 
             'campaign_id',
-            'SKAd_conversion_value' 
+            'SKAd_conversion_value',
+            'app_id'
         )}} as primary_key,
 
         t1.* except(
