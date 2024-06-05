@@ -36,8 +36,7 @@ t2 as
             'country', 
             'platform', 
             'ad_unit', 
-            'app_version_name', 
-            'mobile_os_version'
+            'app_version_name'
         )}} as primary_key,
 
         {{string_to_date('t1.date','%Y%m%d')}} as date,
@@ -52,7 +51,7 @@ t2 as
         'unknown' as mediation_group_name,
         'unknown' as gma_sdk_version,
         app_version_name as app_version,
-        mobile_os_version,
+        'unknown' as mobile_os_version,
         'unknown' as serving_restriction,
         clicks,
         ad_requests,
@@ -123,8 +122,7 @@ t2 as
             'ad_unit', 
             'ad_source',
             'mediation_group_name',
-            'app_version_name',
-            'mobile_os_version'
+            'app_version_name'
         )}} as primary_key,
 
         {{string_to_date('t1.date','%Y%m%d')}} as date,
@@ -139,7 +137,7 @@ t2 as
         mediation_group_name as mediation_group_name,
         'unknown' as gma_sdk_version,
         app_version_name as app_version,
-        mobile_os_version,
+        'unknown' as mobile_os_version,
         'unknown' as serving_restriction,
         clicks,
         ad_requests,
