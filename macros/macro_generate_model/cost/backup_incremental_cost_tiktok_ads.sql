@@ -18,7 +18,8 @@
 with t1 as 
 (
     select
-        *,
+        * except(advertiser_id),
+        trim(advertiser_id) as advertiser_id,
         {{extract_date_from_timestamp('_airbyte_extracted_at')}} as airbyte_emitted_date
     from {{ref_model}}
     {% if is_incremental() %}
