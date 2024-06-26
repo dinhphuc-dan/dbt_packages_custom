@@ -30,6 +30,7 @@ t2 as
     select
         {{generate_primary_key_table(
             'date',
+            'ad_account_id',
             'adgroup_id',
             'campaign_id',
             'product_type',
