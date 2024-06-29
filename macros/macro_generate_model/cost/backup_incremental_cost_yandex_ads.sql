@@ -1,4 +1,4 @@
-{%- macro backup_incremental_cost_unity_ads(dataset, ref_model) -%}
+{%- macro backup_incremental_cost_yandex_ads(dataset, ref_model) -%}
 {{
     config(
         materialized = 'incremental',
