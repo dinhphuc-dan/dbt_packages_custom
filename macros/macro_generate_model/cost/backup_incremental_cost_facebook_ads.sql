@@ -62,10 +62,10 @@ t2 as
         ),
         
         date_start as date,
-        JSON_VALUE_ARRAY(unique_actions) as unique_actions,
-        JSON_VALUE_ARRAY(unique_outbound_clicks) as unique_outbound_clicks,
-        JSON_VALUE_ARRAY(outbound_clicks) as outbound_clicks,
-        JSON_VALUE_ARRAY(actions) as actions,
+        JSON_QUERY_ARRAY(unique_actions) as unique_actions,
+        JSON_QUERY_ARRAY(unique_outbound_clicks) as unique_outbound_clicks,
+        JSON_QUERY_ARRAY(outbound_clicks) as outbound_clicks,
+        JSON_QUERY_ARRAY(actions) as actions,
     from t1
 ),
 t3 as 
