@@ -62,10 +62,10 @@ t2 as
         ),
         
         date_start as date,
-        JSON_QUERY_ARRAY(unique_actions) as unique_actions,
-        JSON_QUERY_ARRAY(unique_outbound_clicks) as unique_outbound_clicks,
-        JSON_QUERY_ARRAY(outbound_clicks) as outbound_clicks,
-        JSON_QUERY_ARRAY(actions) as actions,
+        array(select to_json_string(unique_actions) from unnest(JSON_EXTRACT_ARRAY(unique_actions, '$')) as unique_actions) as unique_actions,
+        array(select to_json_string(unique_outbound_clicks) from unnest(JSON_EXTRACT_ARRAY(unique_outbound_clicks, '$')) as unique_outbound_clicks) as unique_outbound_clicks,
+        array(select to_json_string(outbound_clicks) from unnest(JSON_EXTRACT_ARRAY(outbound_clicks, '$')) as outbound_clicks) as outbound_clicks,
+        array(select to_json_string(actions) from unnest(JSON_EXTRACT_ARRAY(actions, '$')) as actions) as actions,
     from t1
 ),
 t3 as 
