@@ -12,7 +12,7 @@ with final as
         {{clean_null_and_empty_string('device.mobile_brand_name')}} as device_brand_name,
         {{clean_null_and_empty_string('device.mobile_model_name')}} as device_model_name,
         {{clean_null_and_empty_string('device.mobile_marketing_name')}} as device_marketing_name,
-        {{clean_android_device_os_version_data('device.operating_system_version')}} as device_os_version,
+        {{clean_firebase_device_os_version_data('device.operating_system_version')}} as device_os_version,
         {{clean_null_and_empty_string('device.language')}} as device_language,
         {{clean_null_and_empty_string('geo.continent')}}  as geo_continent,
         {{clean_null_and_empty_string('geo.country')}} as geo_country,
