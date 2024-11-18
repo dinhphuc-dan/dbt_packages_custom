@@ -16,6 +16,7 @@ with final as
         AD_UNIT as ad_unit_id,
         AD_UNIT_NAME ad_unit_name,
         FORMAT as ad_format, 
+        COUNTRY as country_code,
         AD_REQUESTS as ad_requests,
         MATCHED_REQUESTS as matched_requests,
         IMPRESSIONS as impressions,
