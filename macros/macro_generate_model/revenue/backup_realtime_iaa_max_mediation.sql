@@ -10,7 +10,7 @@
 with t1 as
 (
     select *
-    from from {{ref_model}}
+    from {{ref_model}}
 ), 
 final as 
 (
